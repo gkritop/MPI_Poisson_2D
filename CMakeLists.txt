@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.12)
+project(mpi_poisson_2d LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+find_package(MPI REQUIRED)
+add_executable(poisson2d src/main.cpp src/poisson.cpp)
+target_include_directories(poisson2d PRIVATE ${MPI_CXX_INCLUDE_DIRS} src)
+target_link_libraries(poisson2d PRIVATE MPI::MPI_CXX)
